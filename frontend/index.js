@@ -6,6 +6,15 @@ document.addEventListener('DOMContentLoaded', async () => {
         const leaderboardBody = document.getElementById('leaderboard-body');
         const sectionFilter = document.getElementById('section-filter');
 
+        // Search Function
+        const search= document.getElementById('search-input');
+        const btn= document.getElementById('search-btn');
+        btn.addEventListener('click', () => {
+            const tar= search.value.toUpperCase();
+            content= filteredData.filter(x=>(x.name).startsWith(tar));
+            renderLeaderboard(content);
+        })
+        
         // Populate section filter dropdown
         const populateSectionFilter = () => {
             const sections = [...new Set(data.map(student => student.section || 'N/A'))].sort();
